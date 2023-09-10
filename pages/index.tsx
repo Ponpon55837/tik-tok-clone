@@ -25,7 +25,6 @@ const App: React.FC = () => {
   const handleVideoRef = (index: number) => (ref: HTMLVideoElement) => {
     if (ref) {
       videoRefs.push(ref)
-      // videoRef.current[index] = ref
     }
   }
 
