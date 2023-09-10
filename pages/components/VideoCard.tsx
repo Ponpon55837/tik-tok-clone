@@ -24,6 +24,7 @@ const VideoCard = ({ videoRefs, url, autoplay }: Video) => {
             }
           }}
           loop
+          muted
           autoPlay={autoplay}
         />
       </div>
