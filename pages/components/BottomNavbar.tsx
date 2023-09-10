@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHouse,
   faUserFriends,
@@ -6,7 +6,7 @@ import {
   faInbox,
   fa7,
   faUser,
-} from '@fortawesome/free-solid-svg-icons';
+} from '@fortawesome/free-solid-svg-icons'
 
 const BottomNavbar = () => {
   return (
@@ -33,7 +33,7 @@ const BottomNavbar = () => {
         <span className="item-name">Profile</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BottomNavbar;
+export default BottomNavbar

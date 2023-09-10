@@ -1,8 +1,8 @@
 interface Video {
-  videoRef: any;
-  url: string;
-  setVideoRef: any;
-  autoplay: boolean;
+  videoRef: any
+  url: string
+  setVideoRef: any
+  autoplay: boolean
 }
 
 const VideoCard = ({ videoRef, url, setVideoRef, autoplay }: Video) => {
@@ -14,15 +14,15 @@ const VideoCard = ({ videoRef, url, setVideoRef, autoplay }: Video) => {
           className="video-player"
           src={url}
           ref={(ref) => {
-            videoRef.current = ref;
-            setVideoRef(ref);
+            videoRef.current = ref
+            setVideoRef(ref)
           }}
           loop
           autoPlay={autoplay}
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VideoCard;
+export default VideoCard

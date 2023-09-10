@@ -1,10 +1,4 @@
-const TopNavbar = ({
-  profilePic,
-  title,
-}: {
-  profilePic: string;
-  title: string;
-}) => {
+const TopNavbar = ({ profilePic, title }: { profilePic: string; title: string }) => {
   return (
     <div className="top-navbar">
       {profilePic ? (
@@ -17,7 +11,7 @@ const TopNavbar = ({
       ) : null}
       <h2>{title}</h2>
     </div>
-  );
-};
+  )
+}
 
-export default TopNavbar;
+export default TopNavbar
