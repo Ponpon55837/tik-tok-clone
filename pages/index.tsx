@@ -52,8 +52,8 @@ const App: React.FC = () => {
   useEffect(() => {
     const observerOptions = {
       root: null, // 指定觸發位置，這裡為預設值，代表視窗
-      rootMargin: '-20px', // 指定觸發位置的偏移量，這裡為底部偏移 0px 觸發
-      threshold: 0.8,
+      rootMargin: '0px', // 指定觸發位置的偏移量，這裡為底部偏移 0px 觸發
+      // threshold: 0.8,
     }
 
     const handleIntersection: IntersectionObserverCallback = (entries) => {
@@ -89,7 +89,7 @@ const App: React.FC = () => {
             <div key={index}>
               <TopNavbar profilePic={video.cover} title={video.title ?? ''} />
               <VideoCard
-                videoRef={videoRef}
+                videoRef={videoRefs}
                 url={video.play_url}
                 setVideoRef={handleVideoRef(index)}
                 autoplay={index === 0}
