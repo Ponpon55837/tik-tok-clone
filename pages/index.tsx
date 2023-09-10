@@ -14,6 +14,7 @@ interface Video {
 
 const App: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement[]>([])
+  const videoRefs: HTMLVideoElement[] = []
   const [state, produce] = useImmer<Video>({
     videos: [],
   })
@@ -23,7 +24,8 @@ const App: React.FC = () => {
   // 儲存 video ref 陣列
   const handleVideoRef = (index: number) => (ref: HTMLVideoElement) => {
     if (ref) {
-      videoRef.current[index] = ref
+      videoRefs.push(ref)
+      // videoRef.current[index] = ref
     }
   }
 
@@ -70,10 +72,9 @@ const App: React.FC = () => {
     const observer = new IntersectionObserver(handleIntersection, observerOptions)
 
     // 使用observer.observe()觀察videoRef.current的影片進度
-    videoRef.current?.length > 0 &&
-      videoRef.current.forEach((videoRef) => {
-        observer.observe(videoRef)
-      })
+    videoRefs.forEach((videoRef) => {
+      observer.observe(videoRef)
+    })
 
     // disconnect observer
     return () => {
