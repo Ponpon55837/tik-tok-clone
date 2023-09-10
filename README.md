@@ -11,11 +11,13 @@
 
 ## Environment
 
+```
 node v18.12.1
 npm 8.19.2
 next.js 13.4.19
 react.js 18.2.0
 typescript 5.2.2
+```
 
 ## Question
 
