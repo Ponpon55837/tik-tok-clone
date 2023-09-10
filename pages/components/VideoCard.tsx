@@ -1,11 +1,16 @@
+import { useEffect } from 'react'
+
 interface Video {
-  videoRef: any
+  videoRefs: any
   url: string
-  setVideoRef: any
   autoplay: boolean
 }
 
-const VideoCard = ({ videoRef, url, setVideoRef, autoplay }: Video) => {
+const VideoCard = ({ videoRefs, url, autoplay }: Video) => {
+  useEffect(() => {
+    videoRefs.current[0].play()
+  }, [])
+
   return (
     <div className="video">
       <div className="video-player">
@@ -13,9 +18,10 @@ const VideoCard = ({ videoRef, url, setVideoRef, autoplay }: Video) => {
           controls
           className="video-player"
           src={url}
-          ref={(ref) => {
-            videoRef.current = ref
-            setVideoRef(ref)
+          ref={(element) => {
+            if (element && !videoRefs.current.includes(element)) {
+              videoRefs.current.push(element)
+            }
           }}
           loop
           autoPlay={autoplay}

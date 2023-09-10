@@ -13,20 +13,12 @@ interface Video {
 }
 
 const App: React.FC = () => {
-  const videoRef = useRef<HTMLVideoElement[]>([])
-  const videoRefs: HTMLVideoElement[] = []
+  const videoRefs = useRef(new Array())
   const [state, produce] = useImmer<Video>({
     videos: [],
   })
 
   const { videos } = state
-
-  // 儲存 video ref 陣列
-  const handleVideoRef = (index: number) => (ref: HTMLVideoElement) => {
-    if (ref) {
-      videoRefs.push(ref)
-    }
-  }
 
   // 取得 api 資料
   useEffect(() => {
@@ -52,8 +44,8 @@ const App: React.FC = () => {
   useEffect(() => {
     const observerOptions = {
       root: null, // 指定觸發位置，這裡為預設值，代表視窗
-      rootMargin: '0px', // 指定觸發位置的偏移量，這裡為底部偏移 0px 觸發
-      // threshold: 0.8,
+      rootMargin: '-20px', // 指定觸發位置的偏移量，這裡為底部偏移 0px 觸發
+      threshold: 0.8,
     }
 
     const handleIntersection: IntersectionObserverCallback = (entries) => {
@@ -71,7 +63,8 @@ const App: React.FC = () => {
     const observer = new IntersectionObserver(handleIntersection, observerOptions)
 
     // 使用observer.observe()觀察videoRef.current的影片進度
-    videoRefs.forEach((videoRef) => {
+    console.log(videoRefs.current, observer)
+    videoRefs.current.forEach((videoRef) => {
       observer.observe(videoRef)
     })
 
@@ -89,10 +82,9 @@ const App: React.FC = () => {
             <div key={index}>
               <TopNavbar profilePic={video.cover} title={video.title ?? ''} />
               <VideoCard
-                videoRef={videoRefs}
+                videoRefs={videoRefs}
                 url={video.play_url}
-                setVideoRef={handleVideoRef(index)}
-                autoplay={index === 0}
+                autoplay={index === 0 ? true : false}
               />
             </div>
           ))}
